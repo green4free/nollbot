@@ -5,12 +5,12 @@ import Data.List
 import System.Exit
 import System.Random
 
-server = 
 port = 6667
-chan = 
 nick = "nollbot"
+chan = "#botlab"
 
 main = do
+    server <- promptLine "Server: "
     h <- connectTo server (PortNumber (fromIntegral port))
     hSetBuffering h NoBuffering
     write h "NICK" nick
@@ -61,3 +61,8 @@ shuffle [] = return []
 shuffle xs = do randomPosition <- getStdRandom (randomR (0, length xs - 1))
                 let (left, (a:right)) = splitAt randomPosition xs
                 fmap (a:) (shuffle (left ++ right))
+
+promptLine :: String -> IO String
+promptLine prompt = do
+    putStr prompt
+    getLine
