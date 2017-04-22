@@ -5,9 +5,9 @@ import Data.List
 import System.Exit
 import System.Random
 
-server = "irc.dalo.se"
+server = 
 port = 6667
-chan = "#botlab"
+chan = 
 nick = "nollbot"
 
 main = do
